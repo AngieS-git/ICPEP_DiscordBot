@@ -21,7 +21,7 @@ bot.on('ready', () =>{console.log(`Logged in as ${bot.user.tag}!`)})
 
 //draft of discord bot commands
 //for now it sends a message, will implement database comparison later on
-bot.on('message',async message =>{
+bot.on('messageCreate',async message =>{
     await message.delete() //to avoid spam
     let args = message.content.substring(command_PREFIX.length).split(" ")
 
@@ -30,28 +30,28 @@ bot.on('message',async message =>{
             case 'help':
                 const help_embed = new Discord.MessageEmbed()
                 .setTitle("Helper Bot")
-                .setColor(0xFF0000)
+                .setColor(0x1EC1FE)
                 .setDescription("Make sure to use the !help to get access to the commands")
     
-                message.author.send(help_embed)
+                message.author.send({embeds:[help_embed]})
             break;
     
             case 'verify':
                 const verify_embed = new Discord.MessageEmbed()
                 .setTitle("Verification Bot")
-                .setColor(0xFF0000)
+                .setColor(0xF8DD1A)
                 .setDescription("Please enter your full name to be verified")
     
-                message.author.send(verify_embed)
+                message.author.send({embeds:[verify_embed]})
             break;
 
             default:
                 const error_embed = new Discord.MessageEmbed()
-                .setTitle("Verification Bot")
+                .setTitle("Error Bot")
                 .setColor(0xFF0000)
                 .setDescription("Sorry, your command does not belong in command list")
     
-                message.author.send(error_embed)
+                message.author.send({embeds:[error_embed]})
     
         }
     }
