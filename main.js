@@ -21,7 +21,8 @@ bot.on('ready', () =>{console.log(`Logged in as ${bot.user.tag}!`)})
 
 //draft of discord bot commands
 //for now it sends a message, will implement database comparison later on
-bot.on('messageCreate',async message =>{
+bot.on('messageCreate', async message =>{
+    if(message.author.bot)
     await message.delete() //to avoid spam
     let args = message.content.substring(command_PREFIX.length).split(" ")
 
