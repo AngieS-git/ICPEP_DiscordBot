@@ -4,10 +4,11 @@ require('dotenv').config({
 //channel IDs
 const ver_channel = '930711292203921428'
 const welc_channel = '930455522153472021'
+const command_PREFIX = '!'
+const { Client, RichEmbed } = require('discord.js') 
+bot.login(process.env.Disc_TOKEN)
 
-const Discord = require('discord.js')
-
-const bot = new Discord.Client({
+const bot = new Client({
     intents: [
         "GUILDS",
         "GUILD_MESSAGES",
@@ -16,10 +17,47 @@ const bot = new Discord.Client({
 })
 
 
-bot.login(process.env.Disc_TOKEN)
-
 bot.on('ready', () =>{console.log(`Logged in as ${bot.user.tag}!`)})
 
+//draft of discord bot commands
+//for now it sends a message, will implement database comparison later on
+bot.on('message',async message =>{
+    await message.delete() //to avoid spam
+    let args = message.content.substring(command_PREFIX.length).split(" ")
+
+    if(message.channel.id === '930711292203921428'){
+        switch(args[0]){
+            case 'help':
+                const help_embed = new RichEmbed()
+                .setTitle("Helper Bot")
+                .setColor(0xFF0000)
+                .setDescription("Make sure to use the !help to get access to the commands")
+    
+                message.author.send(help_embed)
+            break;
+    
+            case 'verify':
+                const verify_embed = new RichEmbed()
+                .setTitle("Verification Bot")
+                .setColor(0xFF0000)
+                .setDescription("Please enter your full name to be verified")
+    
+                message.author.send(verify_embed)
+            break;
+
+            default:
+                const error_embed = new RichEmbed()
+                .setTitle("Verification Bot")
+                .setColor(0xFF0000)
+                .setDescription("Sorry, your command does not belong in command list")
+    
+                message.author.send(error_embed)
+    
+        }
+    }
+    
+})
+/*
 bot.on ('messageCreate', async message => {
     if(message.author.bot) return //ignores bot messages
     if(message.content.toLowerCase()==='!verify' && message.channel.id === '930711292203921428' )
@@ -38,6 +76,8 @@ bot.on ('messageCreate', async message => {
         }
     }
 })
+*/
+
 //prompts user to verify
 bot.on('guildMemberAdd', member => {
     console.log(member.user.tag)
@@ -50,4 +90,6 @@ bot.on('guildMemberAdd', member => {
     send2ver.send(welc_message)
 })
 
+
+//pms user additional instructions whenever they type !verify
 
