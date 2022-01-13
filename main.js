@@ -5,10 +5,10 @@ require('dotenv').config({
 const ver_channel = '930711292203921428'
 const welc_channel = '930455522153472021'
 const command_PREFIX = '!'
-const { Client, RichEmbed } = require('discord.js') 
-bot.login(process.env.Disc_TOKEN)
+const Discord = require('discord.js');
 
-const bot = new Client({
+
+const bot = new Discord.Client({
     intents: [
         "GUILDS",
         "GUILD_MESSAGES",
@@ -25,10 +25,10 @@ bot.on('message',async message =>{
     await message.delete() //to avoid spam
     let args = message.content.substring(command_PREFIX.length).split(" ")
 
-    if(message.channel.id === '930711292203921428'){
+    if(message.channel.id === ver_channel || message.channel.id('930418892415852586')){
         switch(args[0]){
             case 'help':
-                const help_embed = new RichEmbed()
+                const help_embed = new Discord.MessageEmbed()
                 .setTitle("Helper Bot")
                 .setColor(0xFF0000)
                 .setDescription("Make sure to use the !help to get access to the commands")
@@ -37,7 +37,7 @@ bot.on('message',async message =>{
             break;
     
             case 'verify':
-                const verify_embed = new RichEmbed()
+                const verify_embed = new Discord.MessageEmbed()
                 .setTitle("Verification Bot")
                 .setColor(0xFF0000)
                 .setDescription("Please enter your full name to be verified")
@@ -46,7 +46,7 @@ bot.on('message',async message =>{
             break;
 
             default:
-                const error_embed = new RichEmbed()
+                const error_embed = new Discord.MessageEmbed()
                 .setTitle("Verification Bot")
                 .setColor(0xFF0000)
                 .setDescription("Sorry, your command does not belong in command list")
@@ -93,3 +93,4 @@ bot.on('guildMemberAdd', member => {
 
 //pms user additional instructions whenever they type !verify
 
+bot.login(process.env.Disc_TOKEN)

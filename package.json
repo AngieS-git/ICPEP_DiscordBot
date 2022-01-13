@@ -12,5 +12,17 @@
     "discord.js": "^13.5.1",
     "dotenv": "^11.0.0",
     "nodemon": "^2.0.15"
-  }
+  },
+  "devDependencies": {
+    "node": "^16.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngieS-git/ICPEP_DiscordBot.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/AngieS-git/ICPEP_DiscordBot/issues"
+  },
+  "homepage": "https://github.com/AngieS-git/ICPEP_DiscordBot#readme"
 }
