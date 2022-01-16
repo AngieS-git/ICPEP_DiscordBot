@@ -92,7 +92,7 @@ class Ban extends Command {
                 })
             }
         } catch (err) {
-            if (messasage.deleteable) message.delete();
+            if (message.deleteable) message.delete();
             bot.logger.error(`Command: '${this.help.name}' has error: ${err.mesage}.`);
             message.channel.error('misc:ERROR_MESSAGE', {ERROR: err.message}).then(m => m.timeDelete({ timeout: 5000}));
         }
