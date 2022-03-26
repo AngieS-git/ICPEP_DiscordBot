@@ -1,3 +1,39 @@
+<<<<<<< HEAD
+const Discord = require("discord.js")
+require("dotenv").config()
+
+const generateImage = require('./generateWelcImage')
+
+const client = new Discord.Client({
+    intents: [
+        "GUILDS",
+        "GUILD_MESSAGES",
+        "GUILD_MEMBERS"
+    ]
+})
+
+client.on("ready", () => {
+  console.log(`Logged in as ${client.user.tag}`)  
+})
+
+client.on("messageCreate", (message) => {
+    if(message.content == "hello bot")(
+        message.reply("Bot is now active!")
+    )
+})
+
+const welcomeChannelId = '930455522153472021'
+
+client.on("guildMemberAdd", async (member) =>{
+    const img = await generateImage(member)
+    member.guild.channels.cache.get(welcomeChannelId).send({
+        content:`<@${member.id}> Welcome to the server!`,
+        files: [img]
+    })
+})
+
+client.login(process.env.TOKEN)
+=======
 require('dotenv').config({
     path: './env/.env'
 })
@@ -119,3 +155,4 @@ bot.on('guildMemberAdd', member => {
 
 //pms user additional instructions whenever they type !verify
 
+>>>>>>> d3dd23e18bc50e6f1dceb1f287e059cd4314d8ff

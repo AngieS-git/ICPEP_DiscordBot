@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
+  "dependencies": {
+    "canvas": "^2.9.1",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+=======
   "name": "org_bot",
   "version": "1.0.0",
   "description": "Discord Bot for ICPeP.SE",
@@ -11,6 +17,7 @@
   "dependencies": {
     "discord.js": "^13.5.1",
     "dotenv": "^11.0.0",
+>>>>>>> d3dd23e18bc50e6f1dceb1f287e059cd4314d8ff
     "nodemon": "^2.0.15"
   }
 }
